@@ -40,6 +40,7 @@ jobs:
           healthcheck: "https://fullstackopen-tam-pokedex.herokuapp.com/health"
           checkstring: "ok"
           rollbackonhealthcheckfailed: true
+      - uses: actions/checkout@v2
       - name: Bump version and push tags
         if: ${{ github.event_name == 'push' }}
         uses: anothrNick/github-tag-action@1.33.0
