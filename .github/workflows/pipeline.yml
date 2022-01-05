@@ -60,7 +60,7 @@ jobs:
               }]
             }
         env:
-          SLACK_WEBBOOK_URL: ${{ secrets.SLACK_WEBBOOK_URL }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') && success() }}
       - name: send slack failure notification
         uses: 8398a7/action-slack@v3
@@ -68,5 +68,5 @@ jobs:
           status: ${{ job.status }} #failure
           fields: all
         env:
-          SLACK_WEBBOOK_URL: ${{ secrets.SLACK_WEBBOOK_URL }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') && failure() }}
